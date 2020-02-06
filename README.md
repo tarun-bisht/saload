@@ -30,7 +30,7 @@ __(note: To be able to track the saved custom created objects use .Salad extensi
     using Salad;
     ```
 #### Classes
-<a name="save-usage"></a>__Save Class__
+1. <a name="save-usage"></a>__Save Class__
 * __Functions__
     __SetKey__
     ```C#
@@ -39,12 +39,14 @@ __(note: To be able to track the saved custom created objects use .Salad extensi
     * __T__: type of data to save.
 
     * __Parameters__:
-    Name    | DataType  | Description
-    --- | --- | ---
-    key | string |	key by which you can access or refer to saved data later. For ex. For saving 					coins data use key= “coins” to access the coins data later with this name.
-
-    data | generic (any) | data you want to save.
-
+    
+    | Parameter Name  | Data Type     | Description                                              |
+    | --------------- | ------------- | -------------------------------------------------------- |
+    | key             | string        | key by which you can access or refer to saved data later |
+    | data            | generic (any) | data you want to save                                    |
+    
+    __For ex. For saving coins data use key= “coins” to access the coins data later with this name.__
+    
     * __Returns__ : Nothing
 
     * __Code Example__
@@ -91,7 +93,7 @@ __(note: To be able to track the saved custom created objects use .Salad extensi
     ```
     __Note: To be able to save custom type data make sure class is serializable. using ```[System.Serialization]```__
 
-<a name="load-usage"></a>__Load Class__
+2. <a name="load-usage"></a>__Load Class__
 * __Functions__
     __GetKey__
     ```C#
@@ -100,9 +102,10 @@ __(note: To be able to track the saved custom created objects use .Salad extensi
     * __T__: type of data which is loaded.
 
     * __Parameters__:
-    Name    | DataType  | Description
-    --- | --- | ---
-    key | string |	key of data to access
+    
+    | Parameter Name | Data Type | Description            |
+    | -------------- | --------- | ---------------------- |
+    | key            | String    | key of data to access. |
 
     * __Returns__ : Generic type object as defined.
 
