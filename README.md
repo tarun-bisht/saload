@@ -30,7 +30,7 @@ __(note: To be able to track the saved custom created objects use .Salad extensi
     using Salad;
     ```
 #### Classes
-1. <a name="save-usage"></a>__Save Class__
+1. <a name="save-usage"></a>__Save__
 * __Functions__
     __SetKey__
     ```C#
@@ -93,7 +93,7 @@ __(note: To be able to track the saved custom created objects use .Salad extensi
     ```
     __Note: To be able to save custom type data make sure class is serializable. using ```[System.Serialization]```__
 
-2. <a name="load-usage"></a>__Load Class__
+2. <a name="load-usage"></a>__Load__
 * __Functions__
     __GetKey__
     ```C#
