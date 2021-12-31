@@ -24,131 +24,129 @@ Saload is a tool to save and load data efficiently into games.
 - [**Save**](#save-usage) class contains modules for saving data locally in binary format.
 - [**Load**](#load-usage) class contains modules for loading binary data from local storage in game.
 
-### Usage
+## API Reference
 
-#### Namespace
+### Namespace
 
-- <a name="saload-usage"></a>**Importing the Namespace**
-  ```C#
-  using Saload;
-  ```
+<a name="saload-usage"></a>**Importing the Namespace**
+```C#
+using Saload;
+```
 
-#### Classes
+### Classes
 
-1. <a name="save-usage"></a>**Save**
+#### 1. <a name="save-usage"></a>Save
 
-- **Functions**
-  **SetKey**
+##### SetKey
 
-  ```C#
-  void SetKey<T>(string key, T data)
-  ```
+```C#
+void SetKey<T>(string key, T data)
+```
 
-  - **T**: type of data to save.
+- **T**: type of data to save.
 
-  - **Parameters**:
+- **Parameters**:
 
-  | Parameter Name | Data Type     | Description                                              |
-  | -------------- | ------------- | -------------------------------------------------------- |
-  | key            | string        | key by which you can access or refer to saved data later |
-  | data           | generic (any) | data you want to save                                    |
+| Parameter Name | Data Type     | Description                                              |
+| -------------- | ------------- | -------------------------------------------------------- |
+| key            | string        | key by which you can access or refer to saved data later |
+| data           | generic (any) | data you want to save                                    |
 
-  **For ex. For saving coins data use key= “coins” to access the coins data later with this name.**
+**For ex. For saving coins data use key= “coins” to access the coins data later with this name.**
 
-  - **Returns** : Nothing
+- **Returns** : Nothing
 
-  - **Code Example**
+**Code Example**
 
-  ```C#
-      public void SaveScore()
-      {
-          int data =score;
-          //Saving a integer data with key named “Score”
-          Save.SetKey<int>("Score", data);
-      }
-      public void SaveName()
-      {
-          string data = name.text;
-          //Saving a string data with key named “Player_Name”
-          Save.SetKey<string>("Player_Name", data);
-      }
+```C#
+    public void SaveScore()
+    {
+        int data =score;
+        //Saving a integer data with key named “Score”
+        Save.SetKey<int>("Score", data);
+    }
+    public void SaveName()
+    {
+        string data = name.text;
+        //Saving a string data with key named “Player_Name”
+        Save.SetKey<string>("Player_Name", data);
+    }
 
-      public void SavePersonalDetails()
-      {
-          string name = player_name.text;
-          string p_nickname = nickname.text;
-          string p_email = email.text;
-          //Creating PersonalDetails object named person
-          PersonalDetails person = new PersonalDetails(name,p_nickname,p_email);
-          //Saving data of type PersonalDetails
-          Save.SetKey<PersonalDetails>("Details", person);
-      }
-  ```
+    public void SavePersonalDetails()
+    {
+        string name = player_name.text;
+        string p_nickname = nickname.text;
+        string p_email = email.text;
+        //Creating PersonalDetails object named person
+        PersonalDetails person = new PersonalDetails(name,p_nickname,p_email);
+        //Saving data of type PersonalDetails
+        Save.SetKey<PersonalDetails>("Details", person);
+    }
+```
 
-  And Personal Details class looks like
+And Personal Details class looks like
 
-  ```C#
-      [System.Serializable]
-      public class PersonalDetails
-      {
-          public PersonalDetails(string name, string nickname,string email)
-          {
-              this.name = name;
-              this.nickname = nickname;
-              this.email = email;
-          }
-          public string name;
-          public string nickname;
-          public string email;
-      }
-  ```
+```C#
+    [System.Serializable]
+    public class PersonalDetails
+    {
+        public PersonalDetails(string name, string nickname,string email)
+        {
+            this.name = name;
+            this.nickname = nickname;
+            this.email = email;
+        }
+        public string name;
+        public string nickname;
+        public string email;
+    }
+```
 
-  **Note: To be able to save custom type data make sure class is serializable. using `[System.Serialization]`**
+**Note: To be able to save custom type data make sure class is serializable. using `[System.Serialization]`**
 
-2. <a name="load-usage"></a>**Load**
+#### 2. <a name="load-usage"></a>Load
 
-- **Functions**
-  **GetKey**
+##### GetKey
 
-  ```C#
-  T GetKey<T>(string key)
-  ```
+```C#
+T GetKey<T>(string key)
+```
 
-  - **T**: type of data which is loaded.
+- **T**: type of data which is loaded.
 
-  - **Parameters**:
+- **Parameters**:
 
-  | Parameter Name | Data Type | Description            |
-  | -------------- | --------- | ---------------------- |
-  | key            | String    | key of data to access. |
+| Parameter Name | Data Type | Description            |
+| -------------- | --------- | ---------------------- |
+| key            | String    | key of data to access. |
 
-  - **Returns** : Generic type object as defined.
+- **Returns** : Generic type object as defined.
 
-  - **Code Example**
+**Code Example**
 
-  ```C#
-      public void LoadScore()
-      {
-          //load integer from key “Score”
-          score.text = Load.GetKey<int>("Score").ToString();
-      }
-      public void LoadName()
-      {
-          //Load string from key “Player_Name”
-          name.text = Load.GetKey<string>("Player_Name");
-      }
-      public void LoadPersonalDetails()
-      {
-          //Loading PersonalDetails object from key “Details”
-          PersonalDetails person = Load.GetKey<PersonalDetails>("Details");
-          if(person !=null)
-          {
-              player_name.text = person.name;
-              nickname.text = person.nickname;
-              email.text = person.email;
-          }
-      }
-  ```
+```C#
+    public void LoadScore()
+    {
+        //load integer from key “Score”
+        score.text = Load.GetKey<int>("Score").ToString();
+    }
+    public void LoadName()
+    {
+        //Load string from key “Player_Name”
+        name.text = Load.GetKey<string>("Player_Name");
+    }
+    public void LoadPersonalDetails()
+    {
+        //Loading PersonalDetails object from key “Details”
+        PersonalDetails person = Load.GetKey<PersonalDetails>("Details");
+        if(person !=null)
+        {
+            player_name.text = person.name;
+            nickname.text = person.nickname;
+            email.text = person.email;
+        }
+    }
+```
 
 ### <a name="big-chunk-usage"></a> Dealing with big chunks of data
 
